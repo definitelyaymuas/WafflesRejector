@@ -1,13 +1,13 @@
 const waffle = document.getElementById("waffle");
-const goodButton = document.getElementById("yesButton");
-const badButton = document.getElementById("noButton");
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
 
 yesButton.addEventListener("click", () => {
-    ScoreUpdate(True);
+    ScoreUpdate(true);
 })
 
 noButton.addEventListener("click", () => {
-    ScoreUpdate(False);
+    ScoreUpdate(false);
 })
 
 const emojis = ["🧇", "🥞", "🦄", "🥞", "🍯", "💩", "🐸"];
@@ -28,13 +28,16 @@ function ScoreUpdate(isWaffle) {
         showTemporaryMessage(isWaffle ?"Some lucky person is getting waffles! 🎉" : "Aww, no waffles this time. 😢");
         document.getElementById("score").textContent = "Waffles Shipped: " + score;
         showEmoji(); 
-    } 
+    } else {
+        showTemporaryMessage("Aww, no waffles this time. 😭");
+        showEmoji();
+    }
 
     function showTemporaryMessage(msg) {
         const messageDiv = document.createElement("div");
         messageDiv.textContent = msg;
         messageDiv.style.position = "absolute";
-        messageDiv.style.top = "50px";
+        messageDiv.style.bottom = "50px";
         messageDiv.style.left = "50%";
         messageDiv.style.transform = "translate(-50%)";
         messageDiv.style.fontSize = "24px";
@@ -48,10 +51,6 @@ function ScoreUpdate(isWaffle) {
         }, 2000);
     } 
 }
-
-//edits to be made
-//how to get score to update after button click??
-//gah
 
 
 
